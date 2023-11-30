@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure_password
     enum status: { PENDING: 0, VERIFIED: 1, APPROVED: 2 }
     has_many :transactions
 
@@ -18,8 +19,8 @@ class User < ApplicationRecord
 
 
     # validations
-    validates :username, presence: true
-    validates :email, presence: true
+    validates :name, presence: true, uniqueness: true
+    validates :email, presence: true, uniqueness: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
     validates :password, presence: true, length: { minimum: 6 }
     validates :status, presence: true
