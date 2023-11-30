@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'transactions/create'
-  get 'sessions/create'
-  get 'sessions/destroy'
+
+  resources :transactions, only: [:create]
   resources :users
   post '/auth/login', to: 'sessions#login'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
