@@ -24,4 +24,7 @@ class User < ApplicationRecord
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
     validates :password, presence: true, length: { minimum: 6 }
     validates :status, presence: true
+
+
+    attribute :balance, :decimal, default: 0.0
 end
